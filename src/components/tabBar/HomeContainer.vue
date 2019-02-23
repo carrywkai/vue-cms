@@ -9,28 +9,40 @@
         <!-- 九宫格布局 -->
         <ul class="grid-box">
             <li>
-                <img src="../../images/menu1.png" alt="">
-                <span>新闻资讯</span>
+                <router-link to="/home/newslist" class="link">
+                    <img src="../../images/menu1.png" alt="">
+                    <span>新闻资讯</span>
+                </router-link>
             </li>
              <li>
-                <img src="../../images/menu2.png" alt="">
-                <span>图片分享</span>
+                <a href="#" class="link">
+                    <img src="../../images/menu2.png" alt="">
+                    <span>图片分享</span>
+                </a>
             </li>
              <li>
-                <img src="../../images/menu3.png" alt="">
-                <span>商品购买</span>
+                <a href="#" class="link">
+                    <img src="../../images/menu3.png" alt="">
+                    <span>商品购买</span>
+                </a>
             </li>
              <li>
-                <img src="../../images/menu4.png" alt="">
-                <span>留言反馈</span>
+                <a href="#" class="link">
+                    <img src="../../images/menu4.png" alt="">
+                    <span>留言反馈</span>
+                </a>
             </li>
              <li>
-                <img src="../../images/menu5.png" alt="">
-                <span>视屏专区</span>
+                <a href="#" class="link">
+                    <img src="../../images/menu5.png" alt="">
+                    <span>视屏专区</span>
+                </a>
             </li>
              <li>
-                <img src="../../images/menu6.png" alt="">
-                <span>联系我们</span>
+                <a href="#" class="link">
+                    <img src="../../images/menu6.png" alt="">
+                    <span>联系我们</span>
+                </a>
             </li>
         </ul>
     </div>
@@ -93,14 +105,19 @@ export default {
            list-style: none;
            width: 33.33%;
            text-align: center;
-           img {
+           .link {
+               width: 100%;
+               height: 100%;
+               display: block;
+               img {
                width: 60px;
                height: 60px;
                display: block;
                margin: 5px auto;
-           }
-           span {
-               font-size: 12px;
+                }
+              span {
+                    font-size: 12px;
+                }
            }
        }
    }
