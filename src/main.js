@@ -9,13 +9,28 @@ import './lib/mui/css/icons-extra.css'
 
 // 导入根逐渐
 import app from './App.vue'
-import { header,Swipe,SwipeItem, Button } from 'mint-ui'
+
+// ============================按需引入mint-ui组件===============================
+// import { header,Swipe,SwipeItem, Button, Lazyload } from 'mint-ui'
 
 // 全局挂载组件
-Vue.component(header.name, header)
-Vue.component(Swipe.name, Swipe)
-Vue.component(SwipeItem.name, SwipeItem)
-Vue.component(Button.name, Button)
+// Vue.component(header.name, header)
+// Vue.component(Swipe.name, Swipe)
+// Vue.component(SwipeItem.name, SwipeItem)
+// Vue.component(Button.name, Button)
+
+// 使用mint-ui 中的懒加载
+// Vue.use(Lazyload);
+
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
+
+// ====================================================
+// 使用 vue-preview 插件来实现 缩放图
+// 插件不一样， 提供的接口不能实现
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 
 // 导入路由模块
 import router from './router'

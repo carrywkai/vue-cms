@@ -15,16 +15,16 @@
                 </router-link>
             </li>
              <li>
-                <a href="#" class="link">
+                <router-link to="/home/photolist" class="link">
                     <img src="../../images/menu2.png" alt="">
                     <span>图片分享</span>
-                </a>
+                </router-link>
             </li>
              <li>
-                <a href="#" class="link">
+                <router-link to="/home/goodslist" class="link">
                     <img src="../../images/menu3.png" alt="">
                     <span>商品购买</span>
-                </a>
+                </router-link>
             </li>
              <li>
                 <a href="#" class="link">

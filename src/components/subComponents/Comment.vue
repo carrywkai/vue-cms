@@ -2,8 +2,8 @@
     <div class="containeer">
         <h3>发表评论</h3>
         <hr>
-        <textarea placeholder="请输入你的评论内容(最多BB120个字)" maxlength="120"></textarea>
-        <mt-button type='primary' size='large'>发表评论</mt-button>
+        <textarea placeholder="请输入你的评论内容(最多BB120个字)" maxlength="120" v-model="commentContent"></textarea>
+        <mt-button type='primary' size='large' @click="postComment">发表评论</mt-button>
 
         <!-- 评论内容 -->
         <ul class="comment-container">
@@ -28,7 +28,8 @@ export default {
     data () {
         return {
             commentList: [],
-            pageindex: 1
+            pageindex: 1,
+            commentContent: ''
         }
     },
     methods: {
@@ -55,6 +56,33 @@ export default {
         loginMore () {
             this.pageindex ++
             this.getComment()
+        },
+        postComment () { // 发表评论
+            // 1 对评论框的数据进行双向数据绑定
+            // 2 注册提交评论的是点击事件
+            // 3 对评论内容进行校正
+            // 4 将评论内容进行post提交
+            // 5 将评论内容追加到列表数组中
+
+            if (this.commentContent.trim() === 0) { // 评论内容校验
+                return Toast('评论内容不能为空')
+            }
+
+            this.$axios.post('api/postcomment/' + this.$route.params.id, {content: this.commentContent})
+                        .then((result) => {
+                            // console.log(result.data)
+                            if (result.data.status === 0) { // post 提交数据成功
+                                var cmt = {
+                                    user_name: '匿名用户',
+                                    add_time: Date.now(),
+                                    content: this.commentContent.trim()
+                                }
+
+                                this.commentList.unshift(cmt)
+                                this.commentContent = ''
+                            }
+                        })
+
         }
     },
     props: ['id'],
