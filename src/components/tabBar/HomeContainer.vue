@@ -1,11 +1,8 @@
 <template>
     <div style="background-color: #fff">
         <!-- 轮播图 -->
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="(item, index) of bannerList" :key="index">
-               <img :src="item.img" alt="">
-            </mt-swipe-item>
-        </mt-swipe>
+        <swiper :bannerList='bannerList'></swiper>
+        
         <!-- 九宫格布局 -->
         <ul class="grid-box">
             <li>
@@ -50,6 +47,7 @@
 
 <script>
 import { Toast } from 'mint-ui';
+import swiper from '../subComponents/Swiper.vue'
 
 export default {
     data () {
@@ -72,28 +70,15 @@ export default {
     },
     created () {
         this.getBannerData()
+    },
+    components: {
+        swiper
     }
 }
 </script>
 
 <style lang="less" scoped>
-   .mint-swipe {
-       height: 200px;
-       .mint-swipe-items-wrap {
-         width: 100%;
-         height: 100%;
-         .mint-swipe-item {
-             width: 100%;
-             height: 100%;
-             >img {
-                width: 100%;
-                height: 100%;
-                display: block;
-            }
-         }
-          
-       }
-   }
+   
    .grid-box {
        width: 100%;
        height: 200px;
