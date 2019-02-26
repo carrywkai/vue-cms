@@ -1,7 +1,7 @@
 <template>
     <div style="background-color: #fff">
         <!-- 轮播图 -->
-        <swiper :bannerList='bannerList'></swiper>
+        <swiper :bannerList='bannerList' :isfull='true'></swiper>
         
         <!-- 九宫格布局 -->
         <ul class="grid-box">
