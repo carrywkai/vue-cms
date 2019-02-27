@@ -1,7 +1,11 @@
 <template>
    <div class="app-container">
      <!-- 顶部 -->
-     <mt-header fixed title="凯神社区"></mt-header>
+     <mt-header fixed title="凯神社区">
+			 <a href="javascript:;" slot="left" @click.prevent="goBack" v-show="flag">
+					<mt-button icon="back">返回</mt-button>
+			 </a>
+		 </mt-header>
 
      <!-- 中间路由区域 -->
 		 <!-- 给路由切换，添加动画 -->
@@ -21,7 +25,7 @@
 			</router-link>
 			<router-link class="mui-tab-item-carry" to="/shopcar">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge" id="badge">0</span>
+          <span class="mui-badge" id="badge">{{ $store.getters.getAllCount }}</span>
         </span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
@@ -36,7 +40,28 @@
 
 <script>
 export default {
-  
+  data () {
+		return {
+				flag: false
+		}
+	},
+	created () {
+		this.flag = this.$route.path === '/home' ? false : true;
+	},
+	methods: {
+		goBack () {
+			this.$router.go(-1)
+		}
+	},
+	watch: {
+		'$route.path': function (newVal) {
+			if (newVal === '/home') { // 监听路由地址的改变
+				this.flag = false
+			} else {
+				this.flag = true
+			}
+		}
+	}
 }
 </script>
 

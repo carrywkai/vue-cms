@@ -87,7 +87,7 @@ export default {
                 // console.log(result)
                 if (result.data.status === 0) { // 数据请求成功
                     this.goodsinfo = result.data.message[0]
-                    console.log(this.goodsinfo)
+                    // console.log(this.goodsinfo)
                 } 
             })
         },
@@ -100,6 +100,22 @@ export default {
         addBallToCart () {
             this.ballFlag = !this.ballFlag
             // el.style.transform = 'translate(96px,240px)';
+
+            // {id: 商品id, count: 要购买的数量, price: 商品的单价, selected: false}
+            // 拼接一个商品对象，保存到 store 中的 car
+            var goodSingleInfo = {
+                id: this.id,
+                count: this.getCount,
+                price: this.goodsinfo.sell_price,
+                selected: true
+            }
+            // console.log(this.goodSingleInfo)
+
+            // 调用vuex 中的方法
+            this.$store.commit('addToCar',goodSingleInfo)
+            console.log(this.$store.state.car)
+
+
         },
         beforeEnter (el) {
             el.style.transform = 'translate(0,0)'
